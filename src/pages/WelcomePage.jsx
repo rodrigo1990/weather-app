@@ -32,7 +32,7 @@ const WelcomePage = () => {
                                 direction="column"
                                 justify="center"
                                 alignItems="center">
-                            <Typography variantZ="h4" color="inherit">
+                            <Typography variantz="h4" color="inherit">
                                 Weather App
                             </Typography>
                             <Link color="inherit"

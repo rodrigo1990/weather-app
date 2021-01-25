@@ -5,12 +5,13 @@ import * as THREE from 'three'
 
 const WelcomeScreen = ({ children }) => {
   
-    const myRefDiv = useRef(null)//valor incial
+    const myRefDiv = useRef(null)//valor incial / utilizo una referencia directa al DOM
     const [vanta, setVanta] = useState(0)//vanta a va ser incializado en 0
     //En la primer renderziacion "myRefDiv.current" es igual a nulo, el valor inicial
     console.log("myRefDiv.current", myRefDiv.current)
 
-    useEffect (()=>{
+    useEffect (()=>{//PRIMER PARAMETRO (FUNCION)
+        
         console.log("myRefDiv.current (en useEffect )", myRefDiv.current)
 
         //solamente pase una sola vez por dentro del if
@@ -19,7 +20,7 @@ const WelcomeScreen = ({ children }) => {
             //SOLO PASA UNA VEZ
             //donde vamos a ahcer la inicializacion del componente
             //activo el efecto de clouds sobre el div referenciado
-            //ESTAMOS MODIFICANDO EL ESTADO CON ESTA LINEA
+            //ESTAMOS MODIFICANDO EL ESTADO CON ESTA LINEA POR LO TANTO SE EJECUTARA LA RENDERIZACION NUEVAMENTE
             setVanta(Clouds({
                 THREE,
                 el:myRefDiv.current
@@ -40,7 +41,10 @@ const WelcomeScreen = ({ children }) => {
         }
 
 
-    }, [vanta]) //vanta es en este caso la dependencia actualizada
+    }, [vanta]) //<== DEPENDENCIA/2do PARAMETRO (ARRAY)
+                //vanta es en este caso la dependencia actualizada
+                //Si hubera otra dependenia asi fuera un PROP u otra dependencia X
+                //tambien deberia agregarla al array de depdencia
                 // de esta manera me aseguro un funcionamiento
                 //correcto de la aplicacion
 
