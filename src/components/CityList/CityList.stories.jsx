@@ -12,17 +12,17 @@ const cities = [
     {city:"Buenos Aires",
     country:"Argentina",
     temperature:10,
-    state:'sunny'},
+    state:'clear'},
 
     {city:"Formosa",
     country:"Argentina",
     temperature:15,
-    state:'cloudy'},
+    state:'clouds'},
 
     {city:"Medellin",
     country:"Colombia",
     temperature:5,
-    state:'cloudy'},
+    state:'clouds'},
 
 
 ]

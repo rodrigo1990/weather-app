@@ -15,10 +15,10 @@ const AppFrame = ({children}) => {
     return (
         <Grid container 
                 justify="center">
-                    <AppBar position="stasit">
+                    <AppBar position="static">
                         <Toolbar variant="dense">
                             <IconButton 
-                                    color="inherint"
+                                    color="inherit"
                                     arial-label="menu">
 
                                 <Link   

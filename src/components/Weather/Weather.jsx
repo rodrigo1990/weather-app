@@ -6,14 +6,6 @@ import {IconContext} from 'react-icons'
 import IconState from './../IconState'
 
 
-const validValues = [
-    "cloud",
-    "cloudy",
-    "fog", 
-    "sunny",
-    "rain" 
-]
-
 
 const Weather = ({ temperature, state }) => {
     return (
@@ -32,7 +24,6 @@ const Weather = ({ temperature, state }) => {
 
 Weather.propTypes = {
     temperature:PropTypes.number.isRequired,
-    state: PropTypes.oneOf(validValues).isRequired
     }
 
 export default Weather
