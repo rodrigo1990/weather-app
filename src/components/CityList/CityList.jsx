@@ -11,7 +11,6 @@ import Weather from '../Weather'
 const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
     
     const {city,country} = cityAndCountry
-    const {temperature, state} = weather
 
     return (
             <ListItem button key={city} onClick={eventOnClickCity} >
@@ -31,8 +30,11 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
                         <Grid item
                             md={3}
                             xs={12}>
-
-                            <Weather temperature={temperature} state={state} />
+                            {   weather ? //if(weather != 'undefined') 
+                                ( <Weather 
+                                temperature={weather.temperature}
+                                state={weather.state} /> ) : ("No hay datos")
+                             }
                         
                         </Grid>
 
@@ -45,14 +47,25 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
 }
 
 const CityList = ({ cities, onClickCity }) => {
+    /* allWeather
     
-    const weather = { temperature:10, state:"sunny" }
+        [Buenos Aires-argentina]: { }
+        [Formosa-Argentina]: { },
+        [Medellin-Colombia]: { }
+    */
+    const [allWeather, setAllWeather]   = useState({})
+    useEffect(() => {
+
+    }, [])
+
+//    const weather = { temperature:10, state:"sunny" }
 
     return (
         <List>
             {
                 //sobre cada elemento del array ejecuta un renderCityAndCountry
-                cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry, weather))
+                cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry,
+                     allWeather[`${cityAndCountry.city}-${cityAndCountry.country}`] ) )
             }
         </List>
     )
