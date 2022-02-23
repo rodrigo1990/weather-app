@@ -31,7 +31,7 @@ export const NotFoundPage = () => {
                         direction="column"
                         justify="center"
                         alignItems="center">
-                    <Typography variantZ="h4" color="inherit">
+                    <Typography variantz="h4" color="inherit">
                         La pagina no existe
                     </Typography>
                     <Link color="inherit"
