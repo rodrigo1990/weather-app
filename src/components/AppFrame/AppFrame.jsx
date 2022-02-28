@@ -18,7 +18,7 @@ const AppFrame = ({children}) => {
                     <AppBar position="stasit">
                         <Toolbar variant="dense">
                             <IconButton 
-                                    color="inherint"
+                                    color="inherit"
                                     arial-label="menu">
 
                                 <Link   
