@@ -13,9 +13,9 @@ const MainPage = () => {
     }
 
     const cities = [
-        {city:"Buenos Aires", country:"Argentina"},
-        {city:"Formosa", country:"Argentina"},
-        {city:"Medellin", country:"Colombia"},
+        {city:"Buenos Aires", country:"Argentina", countryCode: "AR"},
+        {city:"Formosa", country:"Argentina", countryCode: "AR"},
+        {city:"Medellin", country:"Colombia", countryCode:"CO"},
     ]
 
     return (
