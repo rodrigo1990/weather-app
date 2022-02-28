@@ -77,7 +77,7 @@ const CityList = ({ cities, onClickCity }) => {
                 setAllWeather(allWeather => {
                     
                     const result = {...allWeather,[propName] : propValue}
-                    console.log(result)
+                    console.log(result)//Console log dentro de setState puede volverse un poco loco
 
                     return result
                     
