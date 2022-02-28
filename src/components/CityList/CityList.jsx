@@ -62,8 +62,6 @@ const CityList = ({ cities, onClickCity }) => {
 
             const apiID = "49d7711fc745dd813b885b1c23e71a9e"
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiID}` 
-            console.log(city);
-            console.log(country);
         
             axios
             .get(url)
@@ -71,11 +69,9 @@ const CityList = ({ cities, onClickCity }) => {
                 const { data } = response
                 const temperature = data.main.temp
                 const state = "sunny"
-                console.log(data);
+
                 const propName = `${city}-${country}` //Ej: [Buenos Aires-argentina] ==> INDICE
                 const propValue = { temperature, state } //Ej: {temperature, 10, state: "sunny" } ==> VALUE
-                console.log(propName);
-                console.log(propValue);
                 
                 //set[VARIABLE_ESTADO](VIARABLE_ESTADO => VARIABLE_ESTADO+1)
                 setAllWeather(allWeather => {
