@@ -10,13 +10,13 @@ import Paper from '@material-ui/core/Paper'
 
 
 const forecastItemExample = [
-    {weekDay:"monday", hour:13, state:"sunny", temperature:25},
-    {weekDay:"tuesday", hour:12, state:"cloudy", temperature:5},
-    {weekDay:"wednesday", hour:14, state:"sunny", temperature:25},
-    {weekDay:"thursday", hour:15, state:"cloudy", temperature:5},
-    {weekDay:"friday", hour:9, state:"cloudy", temperature:5},
-    {weekDay:"saturday", hour:2, state:"sunny", temperature:25},
-    {weekDay:"sunday", hour:13, state:"cloudy", temperature:5},
+    {weekDay:"monday", hour:13, state:"clouds", temperature:25},
+    {weekDay:"tuesday", hour:12, state:"thunderstorm", temperature:5},
+    {weekDay:"wednesday", hour:14, state:"drizzle", temperature:25},
+    {weekDay:"thursday", hour:15, state:"clouds", temperature:5},
+    {weekDay:"friday", hour:9, state:"fog", temperature:5},
+    {weekDay:"saturday", hour:2, state:"rain", temperature:25},
+    {weekDay:"sunday", hour:13, state:"thunderstorm", temperature:5},
 ]
 
 const forecastChartExample = [
@@ -32,7 +32,7 @@ const CityPage = () => {
 
     const city="Buenos Aires"
     const country="Argentina"
-    const state="sunny"
+    const state="clouds"
     const temperature=20
     const humidity=80
     const wind=20

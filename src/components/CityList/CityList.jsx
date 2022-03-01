@@ -68,7 +68,7 @@ const CityList = ({ cities, onClickCity }) => {
             .then(response => {
                 const { data } = response
                 const temperature = data.main.temp
-                const state = "sunny"
+                const state = "clouds"
 
 
                 const propName = `${city}-${country}` //Ej: [Buenos Aires-argentina] ==> INDICE

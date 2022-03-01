@@ -8,7 +8,7 @@ test('ForeCastItem render', async () => {
     //Tarea, se deben renderizar los diferentes textos
     const weekDay = "monday"
     const hour = 2
-    const state = "sunny"
+    const state = "clear"
     const temperature = 20
 
     const {findByText} = render(<ForeCastItem 

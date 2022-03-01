@@ -7,11 +7,13 @@ import IconState from './../IconState'
 
 
 const validValues = [
-    "cloud",
-    "cloudy",
-    "fog", 
-    "sunny",
-    "rain" 
+    "rain",
+    "thunderstorm",
+    "drizzle",
+    "snow",
+    "clear",
+    "clouds",
+    "fog"
 ]
 
 
