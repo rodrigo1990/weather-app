@@ -67,8 +67,9 @@ const CityList = ({ cities, onClickCity }) => {
             .get(url)
             .then(response => {
                 const { data } = response
+                console.log(data.weather[0].main);
                 const temperature = data.main.temp
-                const state = "clouds"
+                const state = data.weather[0].main.toLowerCase()
 
 
                 const propName = `${city}-${country}` //Ej: [Buenos Aires-argentina] ==> INDICE
@@ -78,7 +79,7 @@ const CityList = ({ cities, onClickCity }) => {
                 setAllWeather(allWeather => {
                     
                     const result = {...allWeather,[propName] : propValue}
-                    console.log(result)//Console log dentro de setState puede volverse un poco loco
+                    //console.log(result)//Console log dentro de setState puede volverse un poco loco
 
                     return result
                     
