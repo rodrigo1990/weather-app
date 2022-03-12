@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import Weather from '../Weather'
+import convertUnits from 'convert-units'
 
 //renderCityAndCountry se va a convertir en una funcion que retorna otra funcion
 const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
@@ -68,7 +69,7 @@ const CityList = ({ cities, onClickCity }) => {
             .then(response => {
                 const { data } = response
                 console.log(data.weather[0].main);
-                const temperature = data.main.temp
+                const temperature = Number(convertUnits(data.main.temp).from('K').to('C').toFixed(2))
                 const state = data.weather[0].main.toLowerCase()
 
 
