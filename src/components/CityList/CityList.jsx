@@ -63,50 +63,32 @@ const CityList = ({ cities, onClickCity }) => {
 
     useEffect(() => {
 
-        const setWeather = (city,country, countryCode) => {
+        const setWeather =  async (city,country, countryCode) => {
 
             const apiID = "49d7711fc745dd813b885b1c23e71a9e"
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&&appid=${apiID}` 
-        
-            axios
-            .get(url)
-            .then(response => {
+            
+            try {
+                const response = await axios.get(url)
                 const { data } = response
-                console.log(data.weather[0].main);
                 const temperature = Number(convertUnits(data.main.temp).from('K').to('C').toFixed(0))
                 const state = data.weather[0].main.toLowerCase()
-
 
                 const propName = `${city}-${country}` //Ej: [Buenos Aires-argentina] ==> INDICE
                 const propValue = { temperature, state } //Ej: {temperature, 10, state: "sunny" } ==> VALUE
                 
                 //set[VARIABLE_ESTADO](VIARABLE_ESTADO => VARIABLE_ESTADO+1)
-                setAllWeather(allWeather => {
-                    
-                    const result = {...allWeather,[propName] : propValue}
-                    //console.log(result)//Console log dentro de setState puede volverse un poco loco
-
-                    return result
-                    
-                    })//deestructuring para agregar valores en objeto en una sola linea
-                //Escrito de esta manera no es necesario ponerlo como depdencia
-            })
-            .catch(error => {
+                setAllWeather(allWeather => ({...allWeather,[propName] : propValue}))//deestructuring para agregar valores en objeto en una sola linea    
+            } catch (error) {
                 //Errores que nos responde el servidor
                 if( error.response ){
-                    const { data, status } = error.response
-                    console.log('data', data)
-                    console.log('status', status)
                     setError("Ha ocurrido un error en el servidor del clima") 
                 }else if(error.request){//Errores que suceden por no llegar al server
-                    console.log("Server in-accesible o no tengo internet")
                     setError("Verifique la conexion a internet")
                 }else{//Errores imprevisibles
-                    console.log("Errores imprevistos")
                     setError("Error al cargar los datos")
                 }
-            })    
-        
+            }
         }
 
         //deestrucuting
