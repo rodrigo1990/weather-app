@@ -31,11 +31,12 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
                         <Grid item
                             md={3}
                             xs={12}>
-                            {   weather ? //if(weather != 'undefined') 
-                                ( <Weather 
-                                temperature={weather.temperature}
-                                state={weather.state} /> ) : ("No hay datos")
-                             }
+                             
+                            <Weather 
+                                temperature={ weather && weather.temperature}
+                                state={weather && weather.state} /> 
+                               
+                             
                         
                         </Grid>
 

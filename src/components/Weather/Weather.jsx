@@ -2,6 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
+import Skeleton from '@mui/material/Skeleton';
 import {IconContext} from 'react-icons'
 import IconState from './../IconState'
 
@@ -23,8 +24,20 @@ const Weather = ({ temperature, state }) => {
             <Grid container item
                 justify="center">
                 <IconContext.Provider value={{ size:'4em' }}>
-                    <IconState state={state} />
-                    <Typography display="inline" variant="h2">{temperature}°</Typography>
+                    {
+                        state ? 
+                        <IconState state={state} />
+                        :
+                        <Skeleton variant='circular' height={80} width={80}></Skeleton>
+
+                    }
+                    {
+                        temperature ? 
+                        <Typography display="inline" variant="h2">{temperature}°</Typography>
+                        :
+                        <Skeleton variant='rectangular' height={80} width={80}> </Skeleton>
+                    }
+                    
 
                 </IconContext.Provider>
             </Grid>
