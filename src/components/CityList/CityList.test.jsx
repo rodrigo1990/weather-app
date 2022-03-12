@@ -4,20 +4,24 @@ import '@testing-library/jest-dom'
 
 
 import CityList from './CityList'
+import { act } from 'react-dom/test-utils'
 
 const cities = [
     {city:"Buenos Aires",
     country:"Argentina",
+    countryCode: "AR",
     temperature:10,
     state:'sunny'},
 
     {city:"Formosa",
     country:"Argentina",
+    countryCode: "AR",
     temperature:15,
     state:'cloudy'},
 
     {city:"Medellin",
     country:"Colombia",
+    countryCode: "AR",
     temperature:5,
     state:'cloudy'},
 
@@ -27,7 +31,7 @@ test('CityList render', async() => {
 
     
 
-    const {findAllByRole} = render(<CityList cities={cities}/>)
+    const {findAllByRole} = render(<CityList cities={cities} onClickCity={() => {}}/>)
 
 
     const CityListComponents = await findAllByRole("button")
