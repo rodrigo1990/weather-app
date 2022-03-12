@@ -87,6 +87,18 @@ const CityList = ({ cities, onClickCity }) => {
                     
                     })//deestructuring para agregar valores en objeto en una sola linea
                 //Escrito de esta manera no es necesario ponerlo como depdencia
+            })
+            .catch(error => {
+                //Errores que nos responde el servidor
+                if( error.response ){
+                    const { data, status } = error.response
+                    console.log('data', data)
+                    console.log('status', status) 
+                }else if(error.request){//Errores que suceden por no llegar al server
+                    console.log("Server in-accesible o no tengo internet")
+                }else{//Errores imprevisibles
+                    console.log("Errores imprevistos")
+                }
             })    
         
         }
