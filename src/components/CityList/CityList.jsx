@@ -69,7 +69,7 @@ const CityList = ({ cities, onClickCity }) => {
             .then(response => {
                 const { data } = response
                 console.log(data.weather[0].main);
-                const temperature = Number(convertUnits(data.main.temp).from('K').to('C').toFixed(2))
+                const temperature = Number(convertUnits(data.main.temp).from('K').to('C').toFixed(0))
                 const state = data.weather[0].main.toLowerCase()
 
 
