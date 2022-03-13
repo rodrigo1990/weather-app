@@ -15,6 +15,11 @@ class ErrorBoundary extends Component {
         
         return { hasError: true }
     }
+
+    componentDidCatch(error, info) {
+        console.log("Error", info)
+    }
+    
     
     
     render(){// metodo sin parametros
