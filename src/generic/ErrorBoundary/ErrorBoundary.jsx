@@ -29,9 +29,10 @@ class ErrorBoundary extends Component {
         console.log('Estado actual: ', this.state.activo)
         console.log('El componente se ha actualizo')
     }
-    
-    
 
+    componentWillUnmount() {
+        console.log('El component se ha desmontado')
+    }
     
     render(){// metodo sin parametros
         return (
