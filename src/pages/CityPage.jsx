@@ -55,15 +55,15 @@ const CityPage = () => {
                 console.log("error", error)
             }
             const daysAhead = [0 ,1 , 2, 3 , 4, 5]
-                const days = daysAhead.map(d => moment().add(d,'d'))
-                console.log(days)
-                const dataAux = days.map(d => {
-                    return ({
-                        dayHour: d.format('ddd'),
-                        min: 5,
-                        max: 30
-                    })
+            const days = daysAhead.map(d => moment().add(d,'d'))
+            console.log(days)
+            const dataAux = days.map(d => {
+                return ({
+                    dayHour: d.format('ddd'),
+                    min: 5,
+                    max: 30
                 })
+            })
             setData(dataAux)
             setForecastItemList(forecastItemExample)
         }
