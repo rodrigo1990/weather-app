@@ -11,7 +11,7 @@ const MainPage = () => {
     const onClickHander = (city, countryCode) => {
         console.log("city",city)
         console.log("countryCode", countryCode)
-        //history.push("/city")
+        history.push(`/city/${countryCode}/${city}`)
     }
 
     const cities = [
