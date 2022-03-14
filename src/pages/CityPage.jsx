@@ -50,6 +50,7 @@ const CityPage = () => {
         const getForecast = async () => {
             const apiID = "49d7711fc745dd813b885b1c23e71a9e"
             const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&&appid=${apiID}` 
+            const toCelsius = (temp) => Number(convertUnits(temp).from('K').to('C').toFixed(0))
             try{
 
                 const {data} = await axios.get(url)
@@ -57,7 +58,8 @@ const CityPage = () => {
                 const daysAhead = [0 ,1 , 2, 3 , 4]
 
                 const days = daysAhead.map(d => moment().add(d,'d'))
-
+                //Forecast chart
+                //{ "dayHour": "Jue 18", "min": 14, "max": 22, },
                 const dataAux = days.map(day => {
                     const tempObjArray = data.list.filter(item => {
                         const dayOfYear = moment.unix(item.dt).dayOfYear()
@@ -66,7 +68,7 @@ const CityPage = () => {
 
                     const temps = tempObjArray.map(item => item.main.temp)
                     
-                    const toCelsius = (temp) => Number(convertUnits(temp).from('K').to('C').toFixed(0))
+                    
                     
                     return ({
                         dayHour: day.format('ddd'),
@@ -76,7 +78,26 @@ const CityPage = () => {
                 })
             
             setData(dataAux)
-            setForecastItemList(forecastItemExample)
+
+
+
+
+            //{weekDay:"monday", hour:13, state:"clouds", temperature:25},
+            const interval = [4, 8, 12, 16, 20, 24]
+            const forecastItemListAux = data.list
+                .filter((item, index) => interval.includes(index))
+                .map(item => {
+                    return ({
+                        hour:moment.unix(item.dt).hour(),
+                        weekDay: moment.unix(item.dt).format('dddd'),
+                        state: item.weather[0].main.toLowerCase(),
+                        temperature:toCelsius(item.main.temp)
+                    })
+                })
+            
+            console.log("forecastItemListAux",forecastItemListAux)
+            
+            setForecastItemList(forecastItemListAux)
                 
             }catch(error){
                 console.log("error", error)
