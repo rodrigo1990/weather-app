@@ -49,24 +49,34 @@ const CityPage = () => {
             const apiID = "49d7711fc745dd813b885b1c23e71a9e"
             const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&&appid=${apiID}` 
             try{
+
                 const {data} = await axios.get(url)
                 console.log("data", data);
+                const daysAhead = [0 ,1 , 2, 3 , 4, 5]
+                const days = daysAhead.map(d => moment().add(d,'d'))
+
+                const dataAux = days.map(day => {
+                    const tempObjArray = data.list.filter(item => {
+                        const dayOfYear = moment.unix(item.dt).dayOfYear()
+                        return dayOfYear === day.dayOfYear()
+                })
                 
-            }catch(error){
-                console.log("error", error)
-            }
-            const daysAhead = [0 ,1 , 2, 3 , 4, 5]
-            const days = daysAhead.map(d => moment().add(d,'d'))
-            console.log(days)
-            const dataAux = days.map(d => {
+                console.log("tempObJARRay", tempObjArray)
+
                 return ({
-                    dayHour: d.format('ddd'),
+                    dayHour: day.format('ddd'),
                     min: 5,
                     max: 30
                 })
             })
             setData(dataAux)
             setForecastItemList(forecastItemExample)
+                
+            }catch(error){
+                console.log("error", error)
+            }
+            
+            
         }
 
         getForecast()
