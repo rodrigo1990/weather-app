@@ -8,8 +8,10 @@ import Paper from '@material-ui/core/Paper'
 const MainPage = () => {
     const history = useHistory()
     
-    const onClickHander = () => {
-        history.push("/city")
+    const onClickHander = (city, countryCode) => {
+        console.log("city",city)
+        console.log("countryCode", countryCode)
+        //history.push("/city")
     }
 
     const cities = [
