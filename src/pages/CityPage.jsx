@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Grid from '@material-ui/core/Grid'
 import moment from 'moment'
+import 'moment/locale/es'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import AppFrame from './../components/AppFrame'
