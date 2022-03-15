@@ -65,7 +65,7 @@ const CityList = ({ cities, onClickCity }) => {
 
         const setWeather =  async (city, countryCode) => {
 
-            const apiID = "49d7711fc745dd813b885b1c23e71a9e"
+            const apiID = "67e480613b70c9ce77febdb75c011b3e"
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&&appid=${apiID}` 
             
             try {

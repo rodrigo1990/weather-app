@@ -22,7 +22,7 @@ const stateByName = {
 }
 
 const IconState = ({state}) => {
-    const StateByName = stateByName[state]
+    const StateByName = stateByName[state] ? stateByName[state] : stateByName['clear']
     return (
         <StateByName />
     )

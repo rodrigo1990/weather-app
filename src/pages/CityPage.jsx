@@ -48,14 +48,14 @@ const CityPage = () => {
     useEffect( () => {
 
         const getForecast = async () => {
-            const apiID = "49d7711fc745dd813b885b1c23e71a9e"
+            const apiID = "67e480613b70c9ce77febdb75c011b3e"
             const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&&appid=${apiID}` 
             const toCelsius = (temp) => Number(convertUnits(temp).from('K').to('C').toFixed(0))
             try{
 
                 const {data} = await axios.get(url)
                 console.log("data", data);
-                const daysAhead = [0 ,1 , 2, 3 , 4]
+                const daysAhead = [ 1 , 2, 3 , 4,5]
 
                 const days = daysAhead.map(d => moment().add(d,'d'))
                 //Forecast chart
@@ -76,28 +76,26 @@ const CityPage = () => {
                         max: toCelsius(Math.max(...temps))
                     })
                 })
-            
-            setData(dataAux)
+                setData(dataAux)
 
 
 
 
-            //{weekDay:"monday", hour:13, state:"clouds", temperature:25},
-            const interval = [4, 8, 12, 16, 20, 24]
-            const forecastItemListAux = data.list
-                .filter((item, index) => interval.includes(index))
-                .map(item => {
-                    return ({
-                        hour:moment.unix(item.dt).hour(),
-                        weekDay: moment.unix(item.dt).format('dddd'),
-                        state: item.weather[0].main.toLowerCase(),
-                        temperature:toCelsius(item.main.temp)
+                //{weekDay:"monday", hour:13, state:"clouds", temperature:25},
+                const interval = [4, 8, 12, 16, 20, 24]
+                const forecastItemListAux = data.list
+                    .filter((item, index) => interval.includes(index))
+                    .map(item => {
+                        return ({
+                            hour:moment.unix(item.dt).hour(),
+                            weekDay: moment.unix(item.dt).format('dddd'),
+                            state: item.weather[0].main.toLowerCase(),
+                            temperature:toCelsius(item.main.temp)
+                        })
                     })
-                })
-            
-            console.log("forecastItemListAux",forecastItemListAux)
-            
-            setForecastItemList(forecastItemListAux)
+                
+                console.log("forecastItemListAux",forecastItemListAux)
+                setForecastItemList(forecastItemListAux)
                 
             }catch(error){
                 console.log("error", error)
