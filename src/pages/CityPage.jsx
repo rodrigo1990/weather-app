@@ -25,11 +25,13 @@ const CityPage = () => {
     const weather = allWeather[getCityCode(city, countryCode)]
 
     const country=getCountryNameByCountryCode(countryCode)
-    console.log("country", country)
+    
+
     const state= weather && weather.state
     const temperature=weather && weather.temperature
-    const humidity=80
-    const wind=20
+    
+    const humidity=weather && weather.humidity
+    const wind=weather && weather.wind
     //const data = forecastChartExample
     //const forecastItemList = forecastItemExample
 
@@ -49,7 +51,9 @@ const CityPage = () => {
                     <Grid item container xs={12}  justify="center" direction="column" alignItems="center">
 
                             <Weather state={state} temperature={temperature} />
-                            <WeatherDetails humidity={humidity} wind={wind} />
+                            {
+                                humidity && wind &&<WeatherDetails humidity={humidity} wind={wind} />
+                            }
                         
                     </Grid>
                     <Grid item>
