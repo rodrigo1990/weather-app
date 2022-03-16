@@ -26,7 +26,7 @@ const useCityPage = () => {
 
                 const {data} = await axios.get(url)
                 console.log("data", data);
-                const daysAhead = [ 1 , 2, 3 , 4]
+                const daysAhead = [ 1 , 2, 3, 4, 5]//Se puede solucionar de otra manera viendo 294. contemplamos dia sin datos de la temperatura
 
                 const days = daysAhead.map(d => moment().add(d,'d'))
                 //Forecast chart
