@@ -3,6 +3,7 @@ import axios from 'axios'
 import convertUnits from 'convert-units/lib'
 import moment from 'moment'
 import { useParams } from 'react-router-dom'
+import 'moment/locale/es'
 
 
 const useCityPage = () => {

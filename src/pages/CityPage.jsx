@@ -1,6 +1,5 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
-import 'moment/locale/es'
 import AppFrame from './../components/AppFrame'
 import CityInfo from './../components/CityInfo'
 import useCityPage from '../hooks/useCityPage'
