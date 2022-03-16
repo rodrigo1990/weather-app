@@ -1,5 +1,6 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
+import { LinearProgress } from '@mui/material'
 import AppFrame from './../components/AppFrame'
 import CityInfo from './../components/CityInfo'
 import useCityPage from '../hooks/useCityPage'
@@ -44,7 +45,11 @@ const CityPage = () => {
                             <WeatherDetails humidity={humidity} wind={wind} />
                         
                     </Grid>
-
+                    <Grid item>
+                        {
+                            !chartData && !forecastItemList && <LinearProgress />   
+                        }
+                    </Grid>
                     <Grid item>
                         {
                             chartData && <ForecastChart data={chartData}/>
