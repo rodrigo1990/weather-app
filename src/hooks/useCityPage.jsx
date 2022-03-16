@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import convertUnits from 'convert-units/lib'
 import moment from 'moment'
 import { useParams } from 'react-router-dom'
 import { getForecastrUrl } from '../utils/urls'
+import { toCelsius } from '../utils/utils'
 import 'moment/locale/es'
 
 
@@ -23,9 +23,7 @@ const useCityPage = () => {
         const getForecast = async () => {
             
             const url = getForecastrUrl({city, countryCode}) 
-            
-            const toCelsius = (temp) => Number(convertUnits(temp).from('K').to('C').toFixed(0))
-            
+                        
             try{
 
                 const {data} = await axios.get(url)
