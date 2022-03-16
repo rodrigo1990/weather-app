@@ -20,12 +20,16 @@ const CityPage = () => {
 
     const { city,countryCode, chartData, forecastItemList } = useCityPage()
 
+    //Esta es la solucion parcial, ya que no es escalable
     if(!cities || !cities[0] || ( cities[0].city !== city || cities[0].countryCode !== countryCode ) ){
         cities = [ {  city, countryCode } ]
     }
 
     const { allWeather } = useCityList( [ cities ] )
+    //
 
+    //Al crear una instancia nueva de city, countryCode por mas que la informacion sea identica, el hook re-renderiza una y otra vez al detectar una nueva instancia
+    //generado asi, infinitas requests al servivodr
     //const { allWeather } = useCityList( [ { city, countryCode } ] )
     
     const weather = allWeather[getCityCode(city, countryCode)]
