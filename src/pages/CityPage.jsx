@@ -14,13 +14,19 @@ import {getCityCode} from '../utils/utils'
 import {getCountryNameByCountryCode} from '../utils/serviceCities'
 
 
-
+let cities = null
 
 const CityPage = () => {
 
     const { city,countryCode, chartData, forecastItemList } = useCityPage()
 
-    const { allWeather } = useCityList( [ { city, countryCode } ] )
+    if(!cities || !cities[0] || ( cities[0].city !== city || cities[0].countryCode !== countryCode ) ){
+        cities = [ {  city, countryCode } ]
+    }
+
+    const { allWeather } = useCityList( [ cities ] )
+
+    //const { allWeather } = useCityList( [ { city, countryCode } ] )
     
     const weather = allWeather[getCityCode(city, countryCode)]
 
