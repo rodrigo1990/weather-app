@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import {getCityCode, toCelsius} from '../utils/utils'
 import { getWeatherUrl } from '../utils/urls'
+import getAllWeather from '../utils/transform/getAllWeather'
 
 
 const useCityList = (cities) => {
@@ -23,15 +23,10 @@ const useCityList = (cities) => {
              
              try {
                  const response = await axios.get(url)
-                 const { data } = response
-                 const temperature = toCelsius(data.main.temp)
-                 const state = data.weather[0].main.toLowerCase()
- 
-                 const propName = getCityCode(city, countryCode) //Ej: [Buenos Aires-argentina] ==> INDICE
-                 const propValue = { temperature, state } //Ej: {temperature, 10, state: "sunny" } ==> VALUE
                  
-                 //set[VARIABLE_ESTADO](VIARABLE_ESTADO => VARIABLE_ESTADO+1)
-                 setAllWeather(allWeather => ({...allWeather,[propName] : propValue}))//deestructuring para agregar valores en objeto en una sola linea    
+                 setAllWeather(allWeather => ({...allWeather,...getAllWeather( response, city, countryCode ) } ) )//deestructuring para agregar valores en objeto en una sola linea    
+
+                
              } catch (error) {
                  //Errores que nos responde el servidor
                  if( error.response ){
