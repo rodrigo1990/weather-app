@@ -9,18 +9,25 @@ import WeatherDetails from './../components/WeatherDetails'
 import ForecastChart from './../components/ForecastChart'
 import ForeCastItemList from './../components/ForeCastItemList'
 import Paper from '@material-ui/core/Paper'
+import useCityList from '../hooks/useCityList'
+import {getCityCode} from '../utils/utils'
+import {getCountryNameByCountryCode} from '../utils/serviceCities'
 
 
 
 
 const CityPage = () => {
 
-    const { city, chartData, forecastItemList } = useCityPage()
-   
+    const { city,countryCode, chartData, forecastItemList } = useCityPage()
 
-    const country="Argentina"
-    const state="clouds"
-    const temperature=20
+    const { allWeather } = useCityList( [ { city, countryCode } ] )
+    
+    const weather = allWeather[getCityCode(city, countryCode)]
+
+    const country=getCountryNameByCountryCode(countryCode)
+    console.log("country", country)
+    const state= weather && weather.state
+    const temperature=weather && weather.temperature
     const humidity=80
     const wind=20
     //const data = forecastChartExample
