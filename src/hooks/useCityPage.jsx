@@ -3,6 +3,7 @@ import axios from 'axios'
 import convertUnits from 'convert-units/lib'
 import moment from 'moment'
 import { useParams } from 'react-router-dom'
+import { getWeatherUrl } from '../utils/urls'
 import 'moment/locale/es'
 
 
@@ -20,9 +21,11 @@ const useCityPage = () => {
     useEffect( () => {
 
         const getForecast = async () => {
-            const apiID = "67e480613b70c9ce77febdb75c011b3e"
-            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&&appid=${apiID}` 
+            
+            const url = getWeatherUrl({city, countryCode}) 
+            
             const toCelsius = (temp) => Number(convertUnits(temp).from('K').to('C').toFixed(0))
+            
             try{
 
                 const {data} = await axios.get(url)
