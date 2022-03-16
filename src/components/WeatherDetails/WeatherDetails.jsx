@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid'
 const WeatherDetails = ({humidity, wind}) => {
     return (
         <Grid item>
-            <Typography>Humedad: {humidity } Viento: { wind }km/h</Typography>
+            <Typography>Humedad: {humidity }% Viento: { wind }km/h</Typography>
         </Grid>
     )
 }
