@@ -3,7 +3,7 @@ import { toCelsius } from '..//utils'
 
 const getChartData = (data) => {
     console.log("data", data);
-    const daysAhead = [ 1 , 2, 3, 4, 5]//Se puede solucionar de otra manera viendo 294. contemplamos dia sin datos de la temperatura
+    const daysAhead = [ 1 , 2, 3, 4]//Se puede solucionar de otra manera viendo 294. contemplamos dia sin datos de la temperatura
     const days = daysAhead.map(d => moment().add(d,'d'))
 
     //Forecast chart
