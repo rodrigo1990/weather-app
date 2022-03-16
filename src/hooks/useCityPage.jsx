@@ -3,7 +3,7 @@ import axios from 'axios'
 import convertUnits from 'convert-units/lib'
 import moment from 'moment'
 import { useParams } from 'react-router-dom'
-import { getWeatherUrl } from '../utils/urls'
+import { getForecastrUrl } from '../utils/urls'
 import 'moment/locale/es'
 
 
@@ -22,7 +22,7 @@ const useCityPage = () => {
 
         const getForecast = async () => {
             
-            const url = getWeatherUrl({city, countryCode}) 
+            const url = getForecastrUrl({city, countryCode}) 
             
             const toCelsius = (temp) => Number(convertUnits(temp).from('K').to('C').toFixed(0))
             
