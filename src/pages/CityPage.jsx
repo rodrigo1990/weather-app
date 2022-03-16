@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import Grid from '@material-ui/core/Grid'
 import { LinearProgress } from '@mui/material'
 import AppFrame from './../components/AppFrame'
@@ -14,23 +14,21 @@ import {getCityCode} from '../utils/utils'
 import {getCountryNameByCountryCode} from '../utils/serviceCities'
 
 
-let cities = null
+
 
 const CityPage = () => {
 
     const { city,countryCode, chartData, forecastItemList } = useCityPage()
 
-    //Esta es la solucion parcial, ya que no es escalable
-    if(!cities || !cities[0] || ( cities[0].city !== city || cities[0].countryCode !== countryCode ) ){
-        cities = [ {  city, countryCode } ]
-    }
+    //Se generara una nueva instancia de cities, solamente si cambio la informacion
+    const cities = useMemo( () => {
+        
+            return [ { city, countryCode } ] 
+        
+        },[city, countryCode] //Dependencias donde almacenaran los valores (como en los otros hooks)
+    )
 
-    const { allWeather } = useCityList( [ cities ] )
-    //
-
-    //Al crear una instancia nueva de city, countryCode por mas que la informacion sea identica, el hook re-renderiza una y otra vez al detectar una nueva instancia
-    //generado asi, infinitas requests al servivodr
-    //const { allWeather } = useCityList( [ { city, countryCode } ] )
+    const { allWeather } = useCityList( cities )
     
     const weather = allWeather[getCityCode(city, countryCode)]
 
