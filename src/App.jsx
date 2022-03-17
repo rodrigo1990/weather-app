@@ -16,6 +16,8 @@ import Typography from '@material-ui/core/Typography'
 
 
 const App = () => {
+    const [allWeather, setAllWeather]   = useState({})
+
     //Switch Evalua las condiciones de arriba a abajo
     // Por lo tanto va a mostrar la ruta que mas se asemeje al path ingresado
     //Usamos el exact en la vista Welcome para de esta forma evaluar que siempre
@@ -33,7 +35,7 @@ const App = () => {
                     </Route>
 
                     <Route path="/main">
-                        <MainPage />
+                        <MainPage onSetAllWeather={setAllWeather}/>
                     </Route>
 
                     <Route path="/city/:countryCode/:city">

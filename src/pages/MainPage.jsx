@@ -6,7 +6,7 @@ import CityList from './../components/CityList'
 import Paper from '@material-ui/core/Paper'
 import { getCities } from '../utils/serviceCities'
 
-const MainPage = () => {
+const MainPage = (onSetAllWeather) => {
     const history = useHistory()
     
     const onClickHander = (city, countryCode) => {
@@ -21,7 +21,9 @@ const MainPage = () => {
             <Paper elevation={4}>
                 <CityList 
                     cities={getCities()}
-                    onClickCity={onClickHander}/>
+                    onClickCity={onClickHander}
+                    onSetAllWeather={onSetAllWeather}
+                    />
             </Paper>           
         </AppFrame>
     )

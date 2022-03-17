@@ -4,14 +4,14 @@ import { getWeatherUrl } from '../utils/urls'
 import getAllWeather from '../utils/transform/getAllWeather'
 
 
-const useCityList = (cities) => {
+const useCityList = (cities, onSetAllWeather) => {
     /* allWeather
  
      [Buenos Aires-argentina]: {temperature, 10, state: "sunny"}
      [Formosa-Argentina]: {temperature, 10, state: "sunny"},
      [Medellin-Colombia]: {temperature, 10, state: "sunny" }
  */
-     const [allWeather, setAllWeather]   = useState({})
+     //const [allWeather, setAllWeather]   = useState({})
      const [error, setError] = useState(null)
  
  
@@ -20,12 +20,12 @@ const useCityList = (cities) => {
          const setWeather =  async (city, countryCode) => {
  
              const url = getWeatherUrl({ city, countryCode }) 
-             
+             const allWeatherAux = getAllWeather( response, city, countryCode )
              try {
                  const response = await axios.get(url)
                  
-                 setAllWeather(allWeather => ({...allWeather,...getAllWeather( response, city, countryCode ) } ) )//deestructuring para agregar valores en objeto en una sola linea    
-
+                 //setAllWeather(allWeather => ({...allWeather,...allWeatherAux } ) )//deestructuring para agregar valores en objeto en una sola linea    
+                onSetAllWeather( {...allWeather,...allWeatherAux } )
                 
              } catch (error) {
                  //Errores que nos responde el servidor
@@ -45,8 +45,8 @@ const useCityList = (cities) => {
          });
          
  
-     }, [cities])//[cities] ==> dependencia!, allWeather deberia ser una dependencia pero lo usamos de tal manera en el setAllWeather que no nescesario hacerlo
-
+     }, [cities,onSetAllWeather])//[cities] ==> dependencia!, allWeather deberia ser una dependencia pero lo usamos de tal manera en el setAllWeather que no nescesario hacerlo
+                                //INdicara al componente que tiene que re-renderizarse
 
      return {error,setError, allWeather}
 }
