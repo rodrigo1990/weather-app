@@ -28,7 +28,7 @@ const CityPage = () => {
         },[city, countryCode] //Dependencias donde almacenaran los valores (como en los otros hooks)
     )
 
-    const { allWeather } = useCityList( cities )
+    useCityList( cities )
     
     const weather = allWeather[getCityCode(city, countryCode)]
 

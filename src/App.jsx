@@ -35,11 +35,11 @@ const App = () => {
                     </Route>
 
                     <Route path="/main">
-                        <MainPage onSetAllWeather={setAllWeather}/>
+                        <MainPage allWeather={allWeather} onSetAllWeather={setAllWeather}/>
                     </Route>
 
                     <Route path="/city/:countryCode/:city">
-                        <CityPage />
+                        <CityPage allWeather={allWeather} />
                     </Route>
 
                     <Route>

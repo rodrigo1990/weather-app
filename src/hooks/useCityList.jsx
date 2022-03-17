@@ -25,7 +25,7 @@ const useCityList = (cities, onSetAllWeather) => {
                  const response = await axios.get(url)
                  
                  //setAllWeather(allWeather => ({...allWeather,...allWeatherAux } ) )//deestructuring para agregar valores en objeto en una sola linea    
-                onSetAllWeather( {...allWeather,...allWeatherAux } )
+                onSetAllWeather( {...allWeatherAux } )
                 
              } catch (error) {
                  //Errores que nos responde el servidor
@@ -48,7 +48,7 @@ const useCityList = (cities, onSetAllWeather) => {
      }, [cities,onSetAllWeather])//[cities] ==> dependencia!, allWeather deberia ser una dependencia pero lo usamos de tal manera en el setAllWeather que no nescesario hacerlo
                                 //INdicara al componente que tiene que re-renderizarse
 
-     return {error,setError, allWeather}
+     return {error,setError}
 }
 
 
