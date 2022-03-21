@@ -4,7 +4,9 @@ import { getWeatherUrl } from '../utils/urls'
 import getAllWeather from '../utils/transform/getAllWeather'
 
 
+
 const useCityList = (cities, onSetAllWeather) => {
+    debugger;
     /* allWeather
  
      [Buenos Aires-argentina]: {temperature, 10, state: "sunny"}
@@ -16,16 +18,18 @@ const useCityList = (cities, onSetAllWeather) => {
  
  
      useEffect(() => {
- 
+        debugger
          const setWeather =  async (city, countryCode) => {
  
              const url = getWeatherUrl({ city, countryCode }) 
-             const allWeatherAux = getAllWeather( response, city, countryCode )
+            
              try {
                  const response = await axios.get(url)
-                 
+                 const allWeatherAux = getAllWeather( response, city, countryCode )
                  //setAllWeather(allWeather => ({...allWeather,...allWeatherAux } ) )//deestructuring para agregar valores en objeto en una sola linea    
-                onSetAllWeather( {...allWeatherAux } )
+                //onSetAllWeather "sube" entre las distintas paginas y componentes y se ejecuta en App.jsx
+                console.log("allWeatherAux",allWeatherAux)
+                onSetAllWeather( allWeatherAux )
                 
              } catch (error) {
                  //Errores que nos responde el servidor
@@ -34,6 +38,7 @@ const useCityList = (cities, onSetAllWeather) => {
                  }else if(error.request){//Errores que suceden por no llegar al server
                      setError("Verifique la conexion a internet")
                  }else{//Errores imprevisibles
+                    console.log(error)
                      setError("Error al cargar los datos")
                  }
              }
