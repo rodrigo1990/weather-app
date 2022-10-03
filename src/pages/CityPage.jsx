@@ -16,7 +16,7 @@ import {getCountryNameByCountryCode} from '../utils/serviceCities'
 
 
 
-const CityPage = (allWeather,onSetAllWeather) => {
+const CityPage = ({allWeather,onSetAllWeather}) => {
 
     const { city,countryCode, chartData, forecastItemList } = useCityPage()
 
