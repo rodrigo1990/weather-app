@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useMemo, useState } from 'react'
 //alias: "as Router"
 import {
     BrowserRouter as Router,
@@ -16,6 +16,14 @@ import Typography from '@material-ui/core/Typography'
 
 
 const App = () => {
+    debugger
+    const [allWeather, setAllWeather]   = useState({})
+    
+    const onSetAllWeather =useMemo(() =>  ((weatherAux) => {
+        setAllWeather(allWeather => {
+            return ({ ...allWeather, ...weatherAux})
+        })
+    }),[setAllWeather])
     //Switch Evalua las condiciones de arriba a abajo
     // Por lo tanto va a mostrar la ruta que mas se asemeje al path ingresado
     //Usamos el exact en la vista Welcome para de esta forma evaluar que siempre
@@ -33,11 +41,11 @@ const App = () => {
                     </Route>
 
                     <Route path="/main">
-                        <MainPage />
+                        <MainPage allWeather={allWeather} onSetAllWeather={onSetAllWeather} />
                     </Route>
 
                     <Route path="/city/:countryCode/:city">
-                        <CityPage />
+                        <CityPage allWeather={allWeather} onSetAllWeather={onSetAllWeather} />
                     </Route>
 
                     <Route>

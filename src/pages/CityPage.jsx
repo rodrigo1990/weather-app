@@ -16,7 +16,7 @@ import {getCountryNameByCountryCode} from '../utils/serviceCities'
 
 
 
-const CityPage = () => {
+const CityPage = ({allWeather,onSetAllWeather}) => {
 
     const { city,countryCode, chartData, forecastItemList } = useCityPage()
 
@@ -28,7 +28,7 @@ const CityPage = () => {
         },[city, countryCode] //Dependencias donde almacenaran los valores (como en los otros hooks)
     )
 
-    const { allWeather } = useCityList( cities )
+    useCityList( cities,onSetAllWeather )
     
     const weather = allWeather[getCityCode(city, countryCode)]
 

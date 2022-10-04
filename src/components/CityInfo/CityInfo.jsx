@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 
 const CityInfo = ({city, country}) => (
-        <>
-            <Typography display="inline" variant="h4">{city}, <Typography display="inline" variant="h6">{country}</Typography>
- </Typography>
-        </>
+        <div>
+            <Typography display="inline" variant="h4">{city}, </Typography> <Typography display="inline" variant="h4">{country}</Typography>
+        </div>
     )
 
 
