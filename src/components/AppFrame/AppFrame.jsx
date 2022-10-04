@@ -14,8 +14,8 @@ import {WiDaySunny} from 'react-icons/wi'
 const AppFrame = ({children}) => {
     return (
         <Grid container 
-                justify="center">
-                    <AppBar position="stasit">
+                justifyContent="center">
+                    <AppBar position="static">
                         <Toolbar variant="dense">
                             <IconButton 
                                     color="inherit"

@@ -16,7 +16,6 @@ import Typography from '@material-ui/core/Typography'
 
 
 const App = () => {
-    debugger
     const [allWeather, setAllWeather]   = useState({})
     
     const onSetAllWeather =useMemo(() =>  ((weatherAux) => {

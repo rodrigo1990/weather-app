@@ -28,7 +28,7 @@ const CityPage = ({allWeather,onSetAllWeather}) => {
         },[city, countryCode] //Dependencias donde almacenaran los valores (como en los otros hooks)
     )
 
-    useCityList( cities,onSetAllWeather )
+    useCityList( cities, allWeather ,onSetAllWeather )
     
     const weather = allWeather[getCityCode(city, countryCode)]
 
@@ -48,15 +48,15 @@ const CityPage = ({allWeather,onSetAllWeather}) => {
         <AppFrame>
             <Paper elevation={4}>
                 <Grid container
-                    justify="center"
+                    justifyContent="center"
                     direction="column"
                     spacing={2}>
 
-                    <Grid item container xs={12} justify="center" alignItems="flex-end">
+                    <Grid item container xs={12} justifyContent="center" alignItems="flex-end">
                         <CityInfo city={city} country={country} />
                     </Grid>
 
-                    <Grid item container xs={12}  justify="center" direction="column" alignItems="center">
+                    <Grid item container xs={12}  justifyContent="center" direction="column" alignItems="center">
 
                             <Weather state={state} temperature={temperature} />
                             {

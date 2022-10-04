@@ -22,7 +22,7 @@ const Weather = ({ temperature, state }) => {
     return (
         <div>
             <Grid container item
-                justify="center">
+                justifyContent="center">
                 <IconContext.Provider value={{ size:'4em' }}>
                     {
                         state ? 

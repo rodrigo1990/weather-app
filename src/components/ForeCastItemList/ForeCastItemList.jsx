@@ -28,7 +28,7 @@ const renderCityAndCountry = ForeCastList => {
 const ForeCastItemList = ({ forecastList }) => (
     <Grid   container
             direction="row"
-            justify="space-around"
+            justifyContent="space-around"
             alignItems="center">
 
         {

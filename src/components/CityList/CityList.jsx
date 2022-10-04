@@ -21,7 +21,7 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
     return (
             <ListItem button key={getCityCode(city, countryCode)} onClick={ () => eventOnClickCity(city, countryCode)} >
                 <Grid container
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center">
 
                         <Grid item
@@ -55,7 +55,7 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
 
 const CityList = ({ cities, onClickCity, onSetAllWeather, allWeather }) => {
  
-    const { error, setError } = useCityList(cities, onSetAllWeather)
+    const { error, setError } = useCityList(cities, allWeather, onSetAllWeather)
 
     //    const weather = { temperature:10, state:"sunny" }
     return (
