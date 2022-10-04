@@ -20,10 +20,14 @@ const useCityList = (cities, allWeather, onSetAllWeather) => {
     useEffect(() => {
 
         const setWeather =  async (city, countryCode) => {
- 
+            
+            const propName = getCityCode(city,countryCode)
+
+            onSetAllWeather({ [propName]: {} })
+
              const url = getWeatherUrl({ city, countryCode }) 
             
-             try {
+            try {
                  const response = await axios.get(url)
                  const allWeatherAux = getAllWeather( response, city, countryCode )
                  //setAllWeather(allWeather => ({...allWeather,...allWeatherAux } ) )//deestructuring para agregar valores en objeto en una sola linea    
@@ -31,7 +35,7 @@ const useCityList = (cities, allWeather, onSetAllWeather) => {
                 console.log("allWeatherAux",allWeatherAux)
                 onSetAllWeather( allWeatherAux )
                 
-             } catch (error) {
+            } catch (error) {
                  //Errores que nos responde el servidor
                  if( error.response ){
                      setError("Ha ocurrido un error en el servidor del clima") 
