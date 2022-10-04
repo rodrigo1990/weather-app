@@ -12,13 +12,13 @@ const WelcomePage = () => {
         <WelcomeScreen>
             <Grid container
                 direction="column"
-                justify="center"
+                justifyContent="center"
                 className="full">
                 
                 <div className="highlight">
 
                     <Grid item container xs={12}
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center">
 
                         <Grid item>
@@ -30,7 +30,7 @@ const WelcomePage = () => {
                         <Grid item 
                                 container 
                                 direction="column"
-                                justify="center"
+                                justifyContent="center"
                                 alignItems="center">
                             <Typography variantz="h4" color="inherit">
                                 Weather App
